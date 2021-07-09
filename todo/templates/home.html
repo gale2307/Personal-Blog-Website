@@ -1,0 +1,21 @@
+﻿{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+{% block content %}
+     {% if blogs %}
+          <table>
+               {% for blog in blogs %}
+               <tr>
+                    <td>{{blog.blog_id}}</td>
+                    <td><a href='{{url_for('content', blog_id = blog.blog_id)}}'>{{blog.title}}</a></td>
+                    <td>{{blog.created_at}}</td>
+                    <td>
+                         {% for tag in blog.tags %}
+                         {{tag.name}},
+                         {% endfor %}
+                    </td>
+               </tr>
+               {% endfor %}
+          </table>
+     {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+﻿{% extends "base.html" %}
+
+{% block title %} {{blog.title}} {% endblock %}
+{% block content %}
+<div>
+     <h1>{{blog.title}}</h1>
+</div>
+{% if blog.feature_image %}
+<div>
+     <img src="{{url_for('static', filename = blog.feature_image)}}"></img>
+</div>
+{% endif %}
+<div>
+     <p>{{blog.content}}<p>
+</div>
+{% endblock %}

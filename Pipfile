@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "==1.19.5"
+pandas = "==1.0.4"
+streamlit = "==0.81.1"
+torch = "==1.7.1"
+flask = "*"
+flask-sqlalchemy = "*"
+psycopg2 = "*"
+wtforms = "*"
+flask-wtf = "*"
+werkzeug = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

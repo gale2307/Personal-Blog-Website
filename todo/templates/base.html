@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <meta charset="utf-8" />
+     <title>{% block title %} {% endblock %}</title>
+     <link rel="stylesheet" href="{{url_for('static', filename='style1.css')}}" />
+</head>
+<body>
+     <div>
+          <li style="display:inline"><a href="{{url_for('home')}}">Home</a></li>
+          <li style="display:inline"><a href="{{url_for('create')}}">Create</a></li>
+     </div>
+     <div id="content">
+          {% block content %} {% endblock %}
+     </div>
+</body>
+</html>

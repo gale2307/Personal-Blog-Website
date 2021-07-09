@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+
+{% block title %} Create New Blog {% endblock %}
+{% block content %}
+     {% if message %} 
+     <p> {{message}} </p>
+     {% endif %}
+     <form action="{{url_for('create')}}" method="POST" enctype="multipart/form-data" style="padding:5px;">
+          {{ form.title.label }}: <br>
+          {{ form.title }}
+          <br>
+          {{ form.content.label }}: <br>
+          {{ form.content }}
+          <br>
+          {{ form.image.label }}: <br>
+          {{ form.image }}
+          <br>
+          {{ form.tags.label }}: <br>
+          {{ form.tags }}
+          <br>
+          {{ form.csrf_token }}
+          {{ form.submit }}
+          <br>
+          {{ form.errors }}
+     </form>
+{% endblock %}
