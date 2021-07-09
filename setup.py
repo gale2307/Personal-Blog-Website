@@ -4,12 +4,15 @@ requires = [
     'flask',
     'flask-sqlalchemy',
     'psycopg2',
+    'werkzeug',
+    'wtforms',
+    'flask_wtf',
 ]
 
 setup(
-    name='flask_todo',
+    name='flask_blog',
     version='0.0',
-    description='A To-Do List built with Flask',
+    description='Personal Blogging Website Project using Flask',
     author='Nicholas Hadiwijaya',
     author_email='nicholaswilliam2307@gmail.com',
     keywords='web flask',
