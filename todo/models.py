@@ -26,7 +26,7 @@ class Blog(db.Model):
         self.created_at = datetime.now()
 
 #class User(db.Model):
-#    """The User object that owns tasks."""
+#    """User object that creates blogs"""
 #    id = db.Column(db.Integer, primary_key=True)
 #    username = db.Column(db.Unicode, nullable=False)
 #    email = db.Column(db.Unicode, nullable=False)

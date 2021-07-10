@@ -10,13 +10,19 @@
           {{ form.title }}
           <br>
           {{ form.content.label }}: <br>
-          {{ form.content(cols = "50") }}
+          {{ form.content(cols = "128", rows = "32") }}
           <br>
           {{ form.image.label }}: <br>
           {{ form.image }}
           <br>
           {{ form.tags.label }}: <br>
           {{ form.tags }}
+          <!--
+          {% for tag in form.tags %}
+          {{tag(class="form-check-input")}}
+          {{tag.label(class="form-check-label")}}
+          {% endfor %}
+          -->
           <br>
           {{ form.csrf_token }}
           {{ form.submit }}
