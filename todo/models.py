@@ -19,24 +19,25 @@ class Blog(db.Model):
     feature_image= db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     tags = db.relationship('Tag', secondary=blog_tag, backref='blogs')
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __init__(self, *args, **kwargs):
         """On construction, set date of creation."""
         super().__init__(*args, **kwargs)
         self.created_at = datetime.now()
 
-#class User(db.Model):
-#    """User object that creates blogs"""
-#    id = db.Column(db.Integer, primary_key=True)
-#    username = db.Column(db.Unicode, nullable=False)
-#    email = db.Column(db.Unicode, nullable=False)
-#    password = db.Column(db.Unicode, nullable=False)
-#    date_joined = db.Column(db.DateTime, nullable=False)
-#    token = db.Column(db.Unicode, nullable=False)
-#    tasks = db.relationship("Task", back_populates="user")
+class User(db.Model):
+    """User object that creates blogs"""
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    email = db.Column(db.String, nullable=False)
+    password = db.Column(db.String(20), nullable=False)
+    date_joined = db.Column(db.DateTime, nullable=False)
+    #token = db.Column(db.Unicode, nullable=False)
+    blogs = db.relationship("Blog", backref="user")
 
-#    def __init__(self, *args, **kwargs):
-#        """On construction, set date of creation."""
-#        super().__init__(*args, **kwargs)
-#        self.date_joined = datetime.now()
-#        self.token = secrets.token_urlsafe(64)
+    def __init__(self, *args, **kwargs):
+        """On construction, set date of creation."""
+        super().__init__(*args, **kwargs)
+        self.date_joined = datetime.now()
+        #self.token = secrets.token_urlsafe(64)

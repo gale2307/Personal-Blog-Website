@@ -8,6 +8,7 @@
                <tr>
                     <td>{{blog.blog_id}}</td>
                     <td><a href='{{url_for('content', blog_id = blog.blog_id)}}'>{{blog.title}}</a></td>
+                    <td>{{blog.user.username}}</td>
                     <td>{{blog.created_at}}</td>
                     <td>
                          {% for tag in blog.tags %}

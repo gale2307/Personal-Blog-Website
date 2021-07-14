@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+
+{% block title %} Sign-up {% endblock %}
+{% block content %}
+     {% if message %}
+          <p> {{message}} </p>
+     {% endif %}
+     <form action="{{url_for('signup')}}" method="POST" style="padding:5px;">
+          {{ form.email.label }}: <br>
+          {{ form.email }}
+          <br>
+          {{ form.username.label }}: <br>
+          {{ form.username }}
+          <br>
+          {{ form.password.label }}: <br>
+          {{ form.password }}
+          <br>
+          {{ form.confirm.label }}: <br>
+          {{ form.confirm }}
+          <br>
+          {{ form.csrf_token }}
+          {{ form.submit }}
+          <br>
+          {{ form.errors }}
+     </form>
+{% endblock %}

@@ -9,7 +9,13 @@
 <body>
      <div>
           <li style="display:inline"><a href="{{url_for('home')}}">Home</a></li>
-          <li style="display:inline"><a href="{{url_for('create')}}">Create</a></li>
+          {% if session['user_id'] %}
+               <li style="display:inline"><a href="{{url_for('create')}}">Create</a></li>
+               <li style="display:inline"><a href="{{url_for('logout')}}">Logout</a></li>
+          {% else %}
+               <li style="display:inline"><a href="{{url_for('login')}}">Login</a></li>
+               <li style="display:inline"><a href="{{url_for('signup')}}">Sign-up</a></li>
+          {% endif %}
      </div>
      <div id="content">
           {% block content %} {% endblock %}

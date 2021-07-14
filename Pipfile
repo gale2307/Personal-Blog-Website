@@ -11,7 +11,7 @@ torch = "==1.7.1"
 flask = "*"
 flask-sqlalchemy = "*"
 psycopg2 = "*"
-wtforms = "*"
+wtforms = {extras = ["email"], version = "*"}
 flask-wtf = "*"
 werkzeug = "*"
 

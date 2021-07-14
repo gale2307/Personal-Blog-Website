@@ -3,7 +3,7 @@
 {% block title %} Create New Blog {% endblock %}
 {% block content %}
      {% if message %} 
-     <p> {{message}} </p>
+          <p> {{message}} </p>
      {% endif %}
      <form action="{{url_for('create')}}" method="POST" enctype="multipart/form-data" style="padding:5px;">
           {{ form.title.label }}: <br>
@@ -17,12 +17,6 @@
           <br>
           {{ form.tags.label }}: <br>
           {{ form.tags }}
-          <!--
-          {% for tag in form.tags %}
-          {{tag(class="form-check-input")}}
-          {{tag.label(class="form-check-label")}}
-          {% endfor %}
-          -->
           <br>
           {{ form.csrf_token }}
           {{ form.submit }}
