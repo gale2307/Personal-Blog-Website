@@ -17,9 +17,9 @@ class Blog(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.Text, nullable=False)
     feature_image= db.Column(db.String)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow) #TODO: rename to present tense
     tags = db.relationship('Tag', secondary=blog_tag, backref='blogs')
-    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) #TODO: rename to present tense
 
     def __init__(self, *args, **kwargs):
         """On construction, set date of creation."""

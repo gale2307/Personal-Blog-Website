@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import Flask, jsonify, request, render_template, redirect, session, url_for, abort
+#from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from .forms import BlogForm, SignupForm, LoginForm
@@ -12,6 +13,8 @@ app.config['SECRET_KEY'] = 'dfewfew123213rwdsgert34tgfd1234trgf'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogdb.db'
 db = SQLAlchemy(app)
 INCOMING_DATE_FMT = '%d/%m/%Y %H:%M:%S'
+#login = LoginManager(app) #TODO: Implement flask login
+#login.login_view = 'login'
 
 from .models import Blog, Tag, User
 db.create_all()
@@ -53,7 +56,7 @@ db.create_all()
 def home():
     """List of routes for this API."""
     blogs = Blog.query.all()
-    return render_template("home.html", blogs = blogs)
+    return render_template("home.html", blogs = blogs, user_id = session['user_id'])
 
 @app.route('/create', methods=["GET", "POST"])
 def create():
@@ -85,7 +88,7 @@ def create():
             db.session.close()
 
         form.image.data.save('todo/static/' + filename)
-        return render_template("create_success.html", message = "New blog created")
+        return render_template("create_success.html", message = "New blog created") #TODO: change to redirect to prevent double submission
 
     print("form not filled properly")
     return render_template('create.html', form = form)
@@ -140,10 +143,11 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('home'))
 
-@app.route('/user/<user>', methods=['GET'])
-def user_page(user):
+@app.route('/user/<user_id>', methods=['GET'])
+def user_page(user_id):
     """User page, contains their posts"""
-    return None
+    blogs = Blog.query.filter_by(created_by = user_id)
+    return render_template("home.html", blogs = blogs)
 
 @app.route('/search', methods=['GET'])
 def search():
