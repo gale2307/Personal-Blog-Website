@@ -6,6 +6,7 @@ requires = [
     'psycopg2',
     'werkzeug',
     'wtforms',
+    'wtforms[email]',
     'flask_wtf',
 ]
 

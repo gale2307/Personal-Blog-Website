@@ -16,36 +16,37 @@ INCOMING_DATE_FMT = '%d/%m/%Y %H:%M:%S'
 from .models import Blog, Tag, User
 db.create_all()
 
-admin = User(id=1, email="nicholaswilliam2307@gmail.com", username = "admin", password = "admin")
-db.session.add(admin)
-try:
-    db.session.commit()
-except Exception as e:
-    print(e)
-    db.session.rollback()
+#admin = User(id=1, email="nicholaswilliam2307@gmail.com", username = "admin", password = "admin")
+#db.session.add(admin)
+#try:
+#    db.session.commit()
+#except Exception as e:
+#    print(e)
+#    db.session.rollback()
 
-admin = User.query.first()
-sample_blog = Blog(blog_id=1, title="This is a sample", content="content")
-admin.blogs.append(sample_blog)
-sample_blog2 = Blog(blog_id=2, title="This is a second sample", content="content")
-admin.blogs.append(sample_blog2)
-db.session.add(sample_blog)
-db.session.add(sample_blog2)
-try:
-    db.session.commit()
-except Exception as e:
-    print(e)
-    db.session.rollback()
+#admin = User.query.first()
+#sample_blog = Blog(blog_id=1, title="This is a sample", content="content")
+#admin.blogs.append(sample_blog)
+#sample_blog2 = Blog(blog_id=2, title="This is a second sample", content="content")
+#admin.blogs.append(sample_blog2)
+#db.session.add(sample_blog)
+#db.session.add(sample_blog2)
+#try:
+#    db.session.commit()
+#except Exception as e:
+#    print(e)
+#    db.session.rollback()
 
-sample_tag = Tag(tag_id=1, name="blog")
-sample_tag2 = Tag(tag_id=2, name="notes")
-db.session.add(sample_tag)
-db.session.add(sample_tag2)
-try:
-    db.session.commit()
-except Exception as e:
-    print(e)
-    db.session.rollback()
+#sample_tag = Tag(tag_id=1, name="blog")
+#sample_tag2 = Tag(tag_id=2, name="notes")
+#db.session.add(sample_tag)
+#db.session.add(sample_tag2)
+#try:
+#    db.session.commit()
+#except Exception as e:
+#    print(e)
+#    db.session.rollback()
+
 
 
 @app.route('/', methods=["GET"])
@@ -84,7 +85,7 @@ def create():
             db.session.close()
 
         form.image.data.save('todo/static/' + filename)
-        return render_template("create.html", form = form, message = "New blog created")
+        return render_template("create_success.html", message = "New blog created")
 
     print("form not filled properly")
     return render_template('create.html', form = form)
