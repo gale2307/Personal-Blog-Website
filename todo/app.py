@@ -56,7 +56,7 @@ db.create_all()
 def home():
     """List of routes for this API."""
     blogs = Blog.query.all()
-    return render_template("home.html", blogs = blogs, user_id = session['user_id'])
+    return render_template("home.html", blogs = blogs)
 
 @app.route('/create', methods=["GET", "POST"])
 def create():
